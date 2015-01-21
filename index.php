@@ -22,7 +22,7 @@
 
 <html>
     <head>
-        <title>Maxi's Tech Test | High Scores</title>
+        <title>Maxi's Tech Test</title>
         <link rel="stylesheet" href="css/style.css" type="text/css" media="screen" />
     </head>
     <body>
@@ -39,7 +39,7 @@
                 if (response.status == 'connected') {
                     FB.api('/me?fields=first_name', function(data) {
                         var welcomeBlock = document.getElementById('fb-welcome');
-                        welcomeBlock.innerHTML = 'Alright, ' + data.first_name + '!</br>';
+                        welcomeBlock.innerHTML = 'Alright, ' + data.first_name + '!</br>Are you ready to test your knowledge?';
                     });
                 }
             }
@@ -125,18 +125,55 @@
         ?>
             <div id="currentScoreBox">Current Score: <?php echo $_SESSION['current_score']."/".$no_of_questions?></div>    
         <?php } ?>
-            <div id="highScoreBox"> <a href="index.php">Main Menu</a></div>
+            <div id="highScoreBox"> <a href="highscores.php">High Scores</a></div>
         <?php //Title page
             if ($_SESSION['current_question'] == -1) {
         ?>
             <p id="fb-welcome">...Logging in...</p>
-            
+            <form method="POST" action="">
+                <input type="submit" value="Start Quiz" name="startButton">
+            </form>
         <?php
             }
-
-
+            //Question page format
+            if (($_SESSION['current_question'] >= 0) and ($_SESSION['current_question'] < $no_of_questions)) {
         ?>
-
-
+            <p><b>Question <?php echo ($_SESSION["current_question"]+1)?>:</b> <?php echo $questions["questions"][$_SESSION["current_question"]]["question"]?></p>
+            <p>
+            <!--Put a div that gets populated with tick etc-->
+                <form method="POST" action="">
+                    <input type="radio" name="answerRadio" value="1"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][0]?><br>
+                    <input type="radio" name="answerRadio" value="2"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][1]?><br>
+                    <input type="radio" name="answerRadio" value="3"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][2]?><br>
+                    <input type="radio" name="answerRadio" value="4"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][3]?><br>
+                    <br>
+                    <input type="submit" name="submitButton" value="Continue">
+                    <input type="submit" name="quitButton" value="Quit">
+                </form>
+            </p>
+        <?php
+                }
+                //Score page
+                if ($_SESSION['current_question'] >= $no_of_questions) {
+                    if($_SESSION["best_score"] > $_SESSION['current_score']){
+                        $_SESSION["best_score"] = $_SESSION['current_score'];
+                    }
+        ?>
+            <div id="finalScoreBox">
+                <?php 
+                if ($_SESSION['current_score'] >= 2) {
+                    echo ("Well done! ");
+                } 
+                else {
+                    echo ("Not great! ");
+                } ?>
+                You got <?php echo $_SESSION['current_score']."/".$no_of_questions?>!
+            </div>
+            <form method="POST" action=''>
+                <input type="submit" value="Try Again?" name="tryButton">
+                <input type="submit" value="Share Score" name="twitterButton">
+            </form>
+        
+        <?php } ?>
     </body>
 </html>

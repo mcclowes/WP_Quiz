@@ -1,0 +1,47 @@
+{ "questions":[
+        { "question": "Facebook App Developers are legally obliged to:",
+            "answer": "2",
+            "options": [
+            	"Share all user data they collect with Facebook.",
+            	"Make it easy for users to remove their App.",
+            	"Give up all rights to control of their App.",
+            	"All of the above."
+            	],
+            "hint": "Hint."
+        },
+        { "question": "Developer's utilising Twitter's API, if requested, must give up user data to law enforcement agencies.",
+            "answer": "2",
+            "options": [
+            	"True",
+            	"False"
+            	],
+            "hint": "Hint."	
+        },
+        { "question": "This is the question?",
+            "answer": "2",
+            "options": [
+            	"This is not the answer.",
+            	"This is the answer."
+            	],
+            "hint": "Hint."	
+        },
+        { "question": "This is the question?",
+            "answer": "2",
+            "options": [
+                "This is not the answer.",
+                "Maybe",
+                "Course",
+                "This is the answer."
+                ],
+            "hint": "Hint." 
+        },
+        { "question": "This is the question?",
+            "answer": "2",
+            "options": [
+                "This is not the answer.",
+                "This is the answer."
+                ],
+            "hint": "Hint." 
+        }
+    ]
+}
