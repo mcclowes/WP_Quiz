@@ -41,6 +41,10 @@
                         var welcomeBlock = document.getElementById('fb-welcome');
                         welcomeBlock.innerHTML = 'Alright, ' + data.first_name + '!</br>Are you ready to test your knowledge?';
                     });
+                    FB.api('/me/picture?fields=url', function(data) {
+                        var userImg = document.getElementById('fb-pic');
+                        userImg.src = data.data.url;
+                    });
                 }
             }
           
@@ -105,7 +109,7 @@
                 $tweet = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
                     
                 // Set status message
-                $tweetMessage = "I scored ".$_SESSION['current_score']."/".$no_of_questions." in #MaxTechTest";
+                $tweetMessage = "Someone scored ".$_SESSION['current_score']."/".$no_of_questions." in #MaxTechTest";
                     
                 // Check for 140 characters
                 if(strlen($tweetMessage) <= 140) {
@@ -116,16 +120,16 @@
         ?>
         <div id="welcomeBanner">
             <div id="head1"> Welcome </div><div id="head2"> to </div><div id="head3"> #MaxTechTest </div>
+            <img id="fb-pic">
         </div>
-        <br>
-        <div id="bestScoreBox">Best Score: <?php echo $_SESSION['current_score']."/".$no_of_questions?></div>
+        <div id="bestScoreBox">Best Score: <?php echo $_SESSION['best_score']."/".$no_of_questions?></div>
         
         <?php
             if ($_SESSION['current_question'] >= 0) { 
         ?>
             <div id="currentScoreBox">Current Score: <?php echo $_SESSION['current_score']."/".$no_of_questions?></div>    
         <?php } ?>
-            <div id="highScoreBox"> <a href="highscores.php">High Scores</a></div>
+            <div id="highScoreBox"> <a href="highscores.php">Latest Scores</a></div>
         <?php //Title page
             if ($_SESSION['current_question'] == -1) {
         ?>
@@ -142,20 +146,22 @@
             <p>
             <!--Put a div that gets populated with tick etc-->
                 <form method="POST" action="">
-                    <input type="radio" name="answerRadio" value="1"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][0]?><br>
-                    <input type="radio" name="answerRadio" value="2"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][1]?><br>
-                    <input type="radio" name="answerRadio" value="3"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][2]?><br>
-                    <input type="radio" name="answerRadio" value="4"> <?php echo $questions["questions"][$_SESSION["current_question"]]["options"][3]?><br>
-                    <br>
+                    <?php 
+                    for ($x = 0; $x < count($questions["questions"][$_SESSION["current_question"]]["options"]); $x++) {
+                    echo ('<input type="radio" name="answerRadio" value="'.($x+1).'"> '.$questions["questions"][$_SESSION["current_question"]]["options"][$x]."<br>");
+                    }?>
+                    </br>
+                    <div id="hintBox"></div>
                     <input type="submit" name="submitButton" value="Continue">
                     <input type="submit" name="quitButton" value="Quit">
                 </form>
+                <button type="submit" value="Hint" onclick="showHint()">Hint</button>
             </p>
         <?php
                 }
                 //Score page
                 if ($_SESSION['current_question'] >= $no_of_questions) {
-                    if($_SESSION["best_score"] > $_SESSION['current_score']){
+                    if($_SESSION["best_score"] <= $_SESSION['current_score']){
                         $_SESSION["best_score"] = $_SESSION['current_score'];
                     }
         ?>
@@ -173,7 +179,20 @@
                 <input type="submit" value="Try Again?" name="tryButton">
                 <input type="submit" value="Share Score" name="twitterButton">
             </form>
-        
         <?php } ?>
+
+        <script>
+            function showHint() {
+                //document.getElementById("hintBut").innerHTML = "poos"
+                xmlhttp = new XMLHttpRequest();
+                xmlhttp.onreadystatechange = function() {
+                    if (xmlhttp.readyState == 4 && xmlhttp.status == 200) {
+                        document.getElementById("hintBox").innerHTML = "<b>Hint:</b>" + xmlhttp.responseText + "<br><br>";
+                    }
+                }
+                xmlhttp.open("GET", "https://community.dur.ac.uk/maximilian.clayton-clowes/getHint.php?questionNumber=<?php echo $_SESSION["current_question"]; ?>", false);
+                xmlhttp.send();
+            }
+        </script>
     </body>
 </html>

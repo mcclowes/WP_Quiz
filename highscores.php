@@ -41,6 +41,10 @@
                         var welcomeBlock = document.getElementById('fb-welcome');
                         welcomeBlock.innerHTML = 'Alright, ' + data.first_name + '!</br>';
                     });
+                    FB.api('/me/picture?fields=url', function(data) {
+                        var userImg = document.getElementById('fb-pic');
+                        userImg.innerHTML = data.data.url;
+                    });
                 }
             }
           
@@ -94,49 +98,43 @@
             require "twitteroauth/autoloader.php";
             use Abraham\TwitterOAuth\TwitterOAuth;
             
-            if (isset($_POST['twitterButton'])) {
-                // Set keys
-                $consumerKey = 'Nc63PhRW8XAgcoCOZgi4nOFra';
-                $consumerSecret = 'vwBPMQGILcVwGD07tjzYIwXgdEOtXTQQSWreInT9MI2NE3rYRk';
-                $accessToken = '203202332-b3D56FAicHtkeVFKg4coj1lM3952xfHAuy0BG59T';
-                $accessTokenSecret = 'STTOClLq24IBhvrILhxH0xShKiRytm9E38syLu5X2vdSo';
-                    
-                // Create object
-                $tweet = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-                    
-                // Set status message
-                $tweetMessage = "I scored ".$_SESSION['current_score']."/".$no_of_questions." in #MaxTechTest";
-                    
-                // Check for 140 characters
-                if(strlen($tweetMessage) <= 140) {
-                    // Post tweet
-                    $tweet->post('statuses/update', array('status' => $tweetMessage));
-                }
-            }
+            // Set keys
+            $consumerKey = 'Nc63PhRW8XAgcoCOZgi4nOFra';
+            $consumerSecret = 'vwBPMQGILcVwGD07tjzYIwXgdEOtXTQQSWreInT9MI2NE3rYRk';
+            $accessToken = '203202332-b3D56FAicHtkeVFKg4coj1lM3952xfHAuy0BG59T';
+            $accessTokenSecret = 'STTOClLq24IBhvrILhxH0xShKiRytm9E38syLu5X2vdSo';
+                
+            // Create object
+            $tweet = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+                
+            $all_tweets = (array)$tweet->get( "search/tweets", array( "count" => "50", "q" => "#MaxTechTest" ) );
+            $tweet_array = array();
         ?>
         <div id="welcomeBanner">
-            <div id="head1"> Welcome </div><div id="head2"> to </div><div id="head3"> #MaxTechTest </div>
+            <div id="head1"> Welcome </div><div id="head2"> to </div><div id="head3"> #MaxTechTest </div> 
+            <img id="fb-pic">
         </div>
-        <br>
-        <div id="bestScoreBox">Best Score: <?php echo $_SESSION['current_score']."/".$no_of_questions?></div>
+        <div id="bestScoreBox">Best Score: <?php echo $_SESSION['best_score']."/".$no_of_questions?></div>
         
         <?php
             if ($_SESSION['current_question'] >= 0) { 
         ?>
             <div id="currentScoreBox">Current Score: <?php echo $_SESSION['current_score']."/".$no_of_questions?></div>    
         <?php } ?>
-            <div id="highScoreBox"> <a href="index.php">Main Menu</a></div>
+            <div id="highScoreBox"> <a href="index.php">Back</a></div>
         <?php //Title page
             if ($_SESSION['current_question'] == -1) {
         ?>
             <p id="fb-welcome">...Logging in...</p>
-            
+        <?php } ?>
+        <br>
+        <div id="highscores">
         <?php
+            for( $x = 0; $x < count( $all_tweets["statuses"] ); $x++ ) {
+                $tweet_array[$x] = (array)$all_tweets["statuses"][$x];
+                print_r("<div id='highscore'><b>".$tweet_array[$x]["text"]."</b></div>");
             }
-
-
         ?>
-
-
+        </div>
     </body>
 </html>

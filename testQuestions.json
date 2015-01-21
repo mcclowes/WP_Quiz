@@ -7,7 +7,7 @@
             	"Give up all rights to control of their App.",
             	"All of the above."
             	],
-            "hint": "Hint."
+            "hint": "App Developer's retain a number of key rights over their app."
         },
         { "question": "Developer's utilising Twitter's API, if requested, must give up user data to law enforcement agencies.",
             "answer": "2",
@@ -15,33 +15,127 @@
             	"True",
             	"False"
             	],
-            "hint": "Hint."	
+            "hint": "Twitter's policy is very much oriented towards protecting the rights of their users."	
         },
-        { "question": "This is the question?",
+        { "question": "There is an international body governing computing and internet laws.",
             "answer": "2",
             "options": [
-            	"This is not the answer.",
-            	"This is the answer."
+            	"True",
+            	"False"
             	],
-            "hint": "Hint."	
+            "hint": "Although bodies such as W3 help manage the internet, they lack legislative powers."	
         },
-        { "question": "This is the question?",
+        { "question": "Activity over the internet can be subject to laws...",
+            "answer": "4",
+            "options": [
+                "In the state where the user resides.",
+                "In no state.",
+                "Dictated by the online community.",
+                "In the state where the user resides, where the hosting server is located and the state where others involved in the activity reside."
+                ],
+            "hint": "All stages of the networking process are covered by laws of some kind." 
+        },
+        { "question": "Freedom of expression, including on the internet, is called for by...",
+            "answer": "3",
+            "options": [
+                "No governing body.",
+                "All individual states and nations.",
+                "The Universal Declaration of Human Rights."
+                ],
+            "hint": "Freedom of expression, whilst a priority of some states, if certainly not favoured by all governments." 
+        },
+        { "question": "What, in the United Kingdom, is considered legally equivalent to publishing material?",
             "answer": "2",
             "options": [
-                "This is not the answer.",
-                "Maybe",
-                "Course",
-                "This is the answer."
+                "Voicing an opinion out loud.",
+                "Posting a tweet.",
+                "Sharing a Facebook post."
                 ],
-            "hint": "Hint." 
+            "hint": "Publishing involves written recording of one's own thought's or ideas." 
         },
-        { "question": "This is the question?",
+        { "question": "Which of these states have strict laws on censorship and actively restrict access to material online?",
+            "answer": "4",
+            "options": [
+                "France",
+                "Brazil",
+                "USA",
+                "Malaysia"
+                ],
+            "hint": "The Brazilian government exert little control and in fact have huge piracy issues." 
+        },
+        { "question": "The Computer Misuse Act 1990 has a major weakness in that it can't effectively prosecute for...",
+            "answer": "1",
+            "options": [
+                "DDOS and BOTNET attacks.",
+                "Unauthorised modification of computer material.",
+                "Electronic theft."
+                ],
+            "hint": "This issue has been particularly relevant over the past 14 months." 
+        },
+        { "question": "Why is software patenting opposed by some?",
+            "answer": "4",
+            "options": [
+                "It is a hindrance to research and development.",
+                "Traditional copyright can provide sufficient protection",
+                "Software is mathematics, and therefore unpatentable.",
+                "All of the above"
+                ],
+            "hint": "Patenting is a contravertial issue." 
+        },
+        { "question": "Internet piracy accounts for ______ of all internet traffic today.",
+            "answer": "3",
+            "options": [
+                "62%",
+                "48%",
+                "24%"
+                ],
+            "hint": "It's less than you might expect." 
+        },
+        { "question": "Net neutrality is the principle that",
             "answer": "2",
             "options": [
-                "This is not the answer.",
-                "This is the answer."
+                "All data on the internet should be free to access",
+                "All data on the internet should be treated equally ",
+                "There should be a minimum acceptable speed for all internet providers"
                 ],
-            "hint": "Hint." 
+            "hint": "But I don't think there is a fast lane from L.A. to Tokyo!" 
+        },
+        { "question": "Law is a primary mode of regulation of the internet, via what Lawrence Lessig calls...",
+            "answer": "3",
+            "options": [
+                "North Coast Code",
+                "South Coast Code",
+                "East Coast Code",
+                "West Coast Code"
+                ],
+            "hint": "ECC - Washington D.C." 
+        },
+        { "question": "Architecture is another primary mode of regulation via...",
+            "answer": "4",
+            "options": [
+                "North Coast Code",
+                "South Coast Code",
+                "East Coast Code",
+                "West Coast Code"
+                ],
+            "hint": "WCC - Silicon Valley " 
+        },
+        { "question": "You can be arrested for what you say on social networks.",
+            "answer": "1",
+            "options": [
+                "True",
+                "False"
+                ],
+            "hint": "Be careful what you say." 
+        },
+        { "question": "The right to be forgotten refers to a law that...",
+            "answer": "3",
+            "options": [
+                "Allows EU citizens to request all data referring on them be deleted.",
+                "Allows EU citizens to forget their passwords without repercussions.",
+                "Allows EU citizens to request search engines no longer link to specific pages associated with them."
+                ],
+            "hint": "Google." 
         }
     ]
 }

@@ -410,6 +410,14 @@ pre code, pre tt {
   display:inline-block;
 }
 
+#fb-pic {
+  height: 88px;
+  width: 88px;
+  margin: -34px -5px;
+  position: relative;
+  display: inline-block;
+}
+
 #scoreBox {
   background-color: #402F3F;
   width:50px;
@@ -422,6 +430,7 @@ pre code, pre tt {
   color: white;
   display:inline-block;
   padding: 0 25px;
+  margin: 5px 0 0 0;
 }
 
 #highScoreBox {
@@ -448,6 +457,56 @@ pre code, pre tt {
   width: 350px;
 }
 
+#highscores {
+  margin: 10px 0px;
+}
+
+#highscores div:nth-child(1){
+  background-color: #402F3F;
+}
+
+#highscores div:nth-child(2){
+  background-color: #D0CB93;
+}
+
+#highscores div:nth-child(3){
+  background-color: #C9C0B9;
+}
+
+#highscores div:nth-child(4){
+  background-color: #402F3F;
+}
+
+#highscores div:nth-child(5){
+  background-color: #D0CB93;
+}
+
+#highscores div:nth-child(6){
+  background-color: #C9C0B9;
+}
+
+#highscores div:nth-child(7){
+  background-color: #402F3F;
+}
+
+#highscores div:nth-child(8){
+  background-color: #D0CB93;
+}
+
+#highscores div:nth-child(9){
+  background-color: #C9C0B9;
+}
+
+#highscores div:nth-child(10){
+  background-color: #402F3F;
+}
+
+#highscore {
+  padding: 10px;
+  margin: 5px;
+  color: white;
+}
+
 input[type="submit"] {
   font-size: 24px;
   padding:5px 25px;
@@ -455,4 +514,19 @@ input[type="submit"] {
   color: white;
   background-color: #402F3F;
   border: 0px solid #000;
+}
+
+button {
+  font-size: 24px;
+  padding:5px 25px;
+  font-weight: bold;
+  color: white;
+  background-color: #C9C0B9;
+  border: 0px solid #000;
+  display:inline-block;
+  margin: -12px 0;
+}
+
+input[type="radio"] {
+  border: 10px solid gray;
 }
