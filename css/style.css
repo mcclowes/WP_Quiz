@@ -461,44 +461,16 @@ pre code, pre tt {
   margin: 10px 0px;
 }
 
-#highscores div:nth-child(1){
+#highscores div:nth-child(3n+1){
   background-color: #402F3F;
 }
 
-#highscores div:nth-child(2){
+#highscores div:nth-child(3n+2){
   background-color: #D0CB93;
 }
 
-#highscores div:nth-child(3){
+#highscores div:nth-child(3n+3){
   background-color: #C9C0B9;
-}
-
-#highscores div:nth-child(4){
-  background-color: #402F3F;
-}
-
-#highscores div:nth-child(5){
-  background-color: #D0CB93;
-}
-
-#highscores div:nth-child(6){
-  background-color: #C9C0B9;
-}
-
-#highscores div:nth-child(7){
-  background-color: #402F3F;
-}
-
-#highscores div:nth-child(8){
-  background-color: #D0CB93;
-}
-
-#highscores div:nth-child(9){
-  background-color: #C9C0B9;
-}
-
-#highscores div:nth-child(10){
-  background-color: #402F3F;
 }
 
 #highscore {

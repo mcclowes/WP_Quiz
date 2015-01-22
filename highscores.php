@@ -43,7 +43,7 @@
                     });
                     FB.api('/me/picture?fields=url', function(data) {
                         var userImg = document.getElementById('fb-pic');
-                        userImg.innerHTML = data.data.url;
+                        userImg.src = data.data.url;
                     });
                 }
             }
